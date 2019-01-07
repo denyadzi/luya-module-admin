@@ -18,6 +18,14 @@ class I18nUserFixture extends UserFixture
             'lang1' => 'Doe',
             'lang2' => 'Dodo',
         ]);
+        $data['user2']['firstname'] = I18n::encode([
+            'lang1' => 'Jane',
+            'lang2' => 'Janet',
+        ]);
+        $data['user2']['lastname'] = I18n::encode([
+            'lang1' => 'Doe',
+            'lang2' => 'Dodo',
+        ]);
         return $data;
     }
 }

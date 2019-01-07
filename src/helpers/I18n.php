@@ -74,6 +74,16 @@ class I18n
     }
 
     /**
+     * Returns initially empty i18n value
+     *
+     * @return array 
+     */
+    public static function getDecodedInitialValue()
+    {
+        return self::decode('');
+    }
+
+    /**
      * Decode an array with i18n values.
      *
      * In order to decode an arry with json values you can use this function istead of iterator trough

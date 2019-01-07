@@ -9,7 +9,6 @@ use admintests\data\fixtures\UserOnlineFixture;
 use admintests\data\fixtures\I18nUserFixture;
 use admintests\data\models\I18nUser;
 use luya\admin\models\UserOnline;
-use luya\admin\components\AdminLanguage;
 use luya\admin\ngrest\plugins\SelectRelationActiveQuery;
 use yii\base\Event;
 
@@ -113,28 +112,9 @@ class SelectRelationActiveQueryTest extends AdminTestCase
         $this->assertSame("Jojo", $lang2Online->user_id);
     }
 
-    private function getAdminLanguageMock()
+    protected function getAdminLanguageMock()
     {
-        $mock = $this->createMock(AdminLanguage::className());
-        $mock
-            ->method('getLanguages')
-            ->willReturn([
-                [
-                    'id' => 1,
-                    'name' => 'Lang1',
-                    'short_code' => 'lang1',
-                    'is_default' => false,
-                    'is_deleted' => false,
-                ],
-                [
-                    'id' => 2,
-                    'name' => 'Lang2',
-                    'short_code' => 'lang2',
-                    'is_default' => true,
-                    'is_deleted' => false,
-                ],
-            ]);
-                    
+        $mock = parent::getAdminLanguageMock();
         $mock
             ->method('getActiveShortCode')
             ->will($this->onConsecutiveCalls('lang1', 'lang2'));
